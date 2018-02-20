@@ -12,7 +12,7 @@ screen_size = (800,600)
 FPS = 60
 black = (0,0,0)
 white = (255,255,255)
-
+time = str(datetime.now().time())
 def main():
 	pygame.init()
 	screen = pygame.display.set_mode(screen_size)
@@ -24,15 +24,15 @@ def main():
 	while True:
 		clock.tick(FPS)
 
-		screen.fill(black)
+
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
 				sys.exit(0)
-
+		screen.fill(black)
 		print(datetime.now().time())
 
-		text = "Hello World!"
+		text = str(datetime.now().time())
 		f = font.render(text, True, white)
 		(fwidth,fheight) = font.size(text)
 		screen.blit(f,(x,y))

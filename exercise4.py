@@ -4,8 +4,8 @@
 For this exercise, draw a circle wherever the user clicks the mouse
 
 '''
-import sys, pygame
-from datetime import datetime
+import sys, pygame, random
+from datetime import date
 assert sys.version_info >= (3,4), 'This script requires at least Python 3.4' 
 
 screen_size = (800,600)
@@ -19,21 +19,27 @@ def main():
 	font = pygame.font.SysFont("arial",64)
 	clock = pygame.time.Clock()
 
-	(x,y,radius) = (100,100,20)
-	
+
 	while True:
 		clock.tick(FPS)
-
 		screen.fill(black)
+		colors = ((0,0,0),(255,255,255),(255,0,0))
+		x = random.randint(0, 800)
+		y = random.randint(0, 600)
+		radius = random.randrange(100)
+		color = colors[random.randrange(len(colors))]
+		pygame.draw.circle(screen, colors, (x, y), radius)
+
+
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				pygame.quit()
 				sys.exit(0)
 			if event.type == pygame.MOUSEBUTTONUP:
 				pos = pygame.mouse.get_pos()
-		
-		pygame.draw.circle(screen, white, (x,y), radius)
-		
+
+
+
 		pygame.display.flip()
 
 if __name__ == '__main__':
